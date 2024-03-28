@@ -21,31 +21,31 @@ import in.codetech.util.ResponseStructure;
 @RestController
 public class MainController {
 
-//	@Autowired
-//	private UserServiceImp userServiceImp;
-//
-//	@PostMapping("/saveUser")
-//	public ResponseStructure<User> saveUser(@RequestBody User user, HashSet<UserRole> userRoles) throws Exception {
-//		return this.userServiceImp.createUser(user, userRoles);
-//	}
-//
-//	@GetMapping("/findUserById")
-//	public ResponseEntity<ResponseStructure<User>> findUserById(@RequestParam long id) {
-//		return userServiceImp.findUserById(id);
-//	}
-//
-//	@GetMapping("/findAllUser")
-//	public ResponseStructure<List<User>> findAllUser() {
-//		return userServiceImp.findAllUser();
-//	}
-//
-//	@DeleteMapping("/delete")
-//	public ResponseEntity<ResponseStructure<User>> deleteUserById(@RequestParam long id) {
-//		return userServiceImp.deleteUserById(id);
-//	}
-//	
-//	@PutMapping("/update")
-//	public ResponseEntity<ResponseStructure<User>> updateUser(@RequestParam long id, @RequestBody User user, HashSet<UserRole> userRoles){
-//		return userServiceImp.updateUser(id, user, userRoles) ;
-//	}
+	@Autowired
+	private UserServiceImp userServiceImp;
+
+	@PostMapping("/saveUser")
+	public ResponseStructure<User> saveUser(@RequestBody User user, HashSet<UserRole> userRoles) throws Exception {
+		return this.userServiceImp.createUser(user, userRoles);
+	}
+
+	@GetMapping("/findUserById")
+	public ResponseEntity<ResponseStructure<User>> findUserById(@RequestParam long id) {
+		return userServiceImp.findUserById(id);
+	}
+
+	@GetMapping("/findAllUser")
+	public ResponseStructure<List<User>> findAllUser() {
+		return userServiceImp.findAllUser();
+	}
+
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseStructure<User>> deleteUserById(@RequestParam long id) {
+		return userServiceImp.deleteUserById(id);
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<ResponseStructure<User>> updateUser(@RequestParam long id, @RequestBody User user, HashSet<UserRole> userRoles){
+		return userServiceImp.updateUser(id, user, userRoles) ;
+	}
 }
