@@ -28,7 +28,7 @@ public class UserServiceImp implements UserService {
 	private RoleRepository roleRepository;
 
 	@Override
-	public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+	public ResponseStructure<User> createUser(User user, Set<UserRole> userRoles) throws Exception {
 
 		User local = this.userRepository.findByUserName(user.getUserName());
 
@@ -42,76 +42,76 @@ public class UserServiceImp implements UserService {
 			local = this.userRepository.save(user);
 		}
 
-//		ResponseStructure<User> structure = new ResponseStructure<User>();
-//		structure.setMessage("Data Inserted Succsessfully!!!");
-//		structure.setStatus(HttpStatus.CREATED.value());
-//		structure.setData(local);
-		return local;
+		ResponseStructure<User> structure = new ResponseStructure<User>();
+		structure.setMessage("Data Inserted Succsessfully!!!");
+		structure.setStatus(HttpStatus.CREATED.value());
+		structure.setData(local);
+		return structure;
 	}
 
-//	@Override
-//	public ResponseEntity<ResponseStructure<User>> findUserById(long id) {
-//		Optional<User> optional = userRepository.findById(id);
-//		ResponseStructure<User> structure = new ResponseStructure<>();
-//		if (optional.isPresent()) {
-//			User user1 = optional.get();
-//			structure.setMessage("Data Found");
-//			structure.setStatus(HttpStatus.FOUND.value());
-//			structure.setData(user1);
-//			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.FOUND);
-//		} else {
-//			throw new IdNotFoundException("Data Not Available!!!");
-//		}
-//	}
-//
-//	@Override
-//	public ResponseStructure<List<User>> findAllUser() {
-//		List<User> list = userRepository.findAll();
-//		ResponseStructure<List<User>> structure = new ResponseStructure<>();
-//		if (list.isEmpty()) {
-//			throw new DataNotPresentException("Data not available!!!");
-//		} else {
-//			structure.setMessage("Data Found!!");
-//			structure.setStatus(HttpStatus.FOUND.value());
-//			structure.setData(list);
-//		}
-//		return structure;
-//	}
-//
-//	@Override
-//	public ResponseEntity<ResponseStructure<User>> deleteUserById(long id) {
-//		Optional<User> optional = userRepository.findById(id);
-//		ResponseStructure<User> structure = new ResponseStructure<>();
-//		if (optional.isPresent()) {
-//			userRepository.deleteById(id);
-//			structure.setMessage("Data Deleted Successfully!!!");
-//			structure.setStatus(HttpStatus.OK.value());
-//			structure.setData(optional.get());
-//			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
-//		} else {
-//			throw new IdNotFoundException("Data Not Available!!!");
-//		}
-//	}
-//
-//	@Override
-//	public ResponseEntity<ResponseStructure<User>> updateUser(long id, User user, Set<UserRole> userRoles) {
-//		Optional<User> optional = userRepository.findById(id);
-//		ResponseStructure<User> structure = new ResponseStructure<>();
-//		if (optional.isPresent()) {
-//			user.setId(id);
-//
-//			for (UserRole uR : userRoles) {
-//				roleRepository.save(uR.getRole());
-//			}
-//			user.getUserRoles().addAll(userRoles);
-//			user = this.userRepository.save(user);
-//			structure.setMessage("Data Updated");
-//			structure.setStatus(HttpStatus.OK.value());
-//			structure.setData(user);
-//			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
-//		} else {
-//			throw new IdNotFoundException("Data Not Available");
-//		}
-//	}
+	@Override
+	public ResponseEntity<ResponseStructure<User>> findUserById(long id) {
+		Optional<User> optional = userRepository.findById(id);
+		ResponseStructure<User> structure = new ResponseStructure<>();
+		if (optional.isPresent()) {
+			User user1 = optional.get();
+			structure.setMessage("Data Found");
+			structure.setStatus(HttpStatus.FOUND.value());
+			structure.setData(user1);
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.FOUND);
+		} else {
+			throw new IdNotFoundException("Data Not Available!!!");
+		}
+	}
+
+	@Override
+	public ResponseStructure<List<User>> findAllUser() {
+		List<User> list = userRepository.findAll();
+		ResponseStructure<List<User>> structure = new ResponseStructure<>();
+		if (list.isEmpty()) {
+			throw new DataNotPresentException("Data not available!!!");
+		} else {
+			structure.setMessage("Data Found!!");
+			structure.setStatus(HttpStatus.FOUND.value());
+			structure.setData(list);
+		}
+		return structure;
+	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<User>> deleteUserById(long id) {
+		Optional<User> optional = userRepository.findById(id);
+		ResponseStructure<User> structure = new ResponseStructure<>();
+		if (optional.isPresent()) {
+			userRepository.deleteById(id);
+			structure.setMessage("Data Deleted Successfully!!!");
+			structure.setStatus(HttpStatus.OK.value());
+			structure.setData(optional.get());
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+		} else {
+			throw new IdNotFoundException("Data Not Available!!!");
+		}
+	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<User>> updateUser(long id, User user, Set<UserRole> userRoles) {
+		Optional<User> optional = userRepository.findById(id);
+		ResponseStructure<User> structure = new ResponseStructure<>();
+		if (optional.isPresent()) {
+			user.setId(id);
+
+			for (UserRole uR : userRoles) {
+				roleRepository.save(uR.getRole());
+			}
+			user.getUserRoles().addAll(userRoles);
+			user = this.userRepository.save(user);
+			structure.setMessage("Data Updated");
+			structure.setStatus(HttpStatus.OK.value());
+			structure.setData(user);
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+		} else {
+			throw new IdNotFoundException("Data Not Available");
+		}
+	}
 
 }
