@@ -61,5 +61,4 @@ public class AngularEduCloudApplication {
 // 		User user1 = this.userService.createUser(user, userRoles) ;
 // 		System.out.println(user1.getUserName());		
 // 	}
-
 }
