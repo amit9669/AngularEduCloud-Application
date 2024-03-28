@@ -18,48 +18,48 @@ import in.codetech.service.UserService;
 import in.codetech.service.UserServiceImp;
 
 @SpringBootApplication
-public class AngularEduCloudApplication implements CommandLineRunner{
-	@Autowired
-	private UserService userService;
+public class AngularEduCloudApplication {
+	// @Autowired
+	// private UserService userService;
 
 	public static void main(String[] args) throws Exception {		
-		ConfigurableApplicationContext applicationContext  =SpringApplication.run(AngularEduCloudApplication.class, args);
+		SpringApplication.run(AngularEduCloudApplication.class, args);
 
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+// 	@Override
+// 	public void run(String... args) throws Exception {
+// 		// TODO Auto-generated method stub
 		
-		System.out.println("Code Start....!!!");
-		User user = new User();
+// 		System.out.println("Code Start....!!!");
+// 		User user = new User();
 
-		user.setId(3l);
-		user.setFirstName("Virat");
-		user.setLastName("Kohli");
-		user.setEmail("Virat45@");
-		user.setpNumber(9325303716l);
-		user.setUserName("virat18");
-		user.setPassword("18");
-		user.setEnable(true);
-		user.setProfile("PNG");
+// 		user.setId(3l);
+// 		user.setFirstName("Virat");
+// 		user.setLastName("Kohli");
+// 		user.setEmail("Virat45@");
+// 		user.setpNumber(9325303716l);
+// 		user.setUserName("virat18");
+// 		user.setPassword("18");
+// 		user.setEnable(true);
+// 		user.setProfile("PNG");
 
-		Role role = new Role();
-		role.setRoleId(1l);
-		role.setRole("Admin");
+// 		Role role = new Role();
+// 		role.setRoleId(1l);
+// 		role.setRole("Admin");
 
-		Set<UserRole> userRoles = new HashSet<>();
+// 		Set<UserRole> userRoles = new HashSet<>();
 
-		UserRole userRole = new UserRole();
-		userRole.setUserRoleID(3l);
-		userRole.setUser(user);
-		userRole.setRole(role);
+// 		UserRole userRole = new UserRole();
+// 		userRole.setUserRoleID(3l);
+// 		userRole.setUser(user);
+// 		userRole.setRole(role);
 
-		userRoles.add(userRole);
-//		System.out.println(userRoles);
+// 		userRoles.add(userRole);
+// //		System.out.println(userRoles);
 
-		User user1 = this.userService.createUser(user, userRoles) ;
-		System.out.println(user1.getUserName());		
-	}
+// 		User user1 = this.userService.createUser(user, userRoles) ;
+// 		System.out.println(user1.getUserName());		
+// 	}
 
 }
