@@ -11,14 +11,14 @@ import in.codetech.util.ResponseStructure;
 
 public interface UserService {
 
-	public User createUser(User user, Set<UserRole> userRoles) throws Exception ;
+	public ResponseStructure<User> createUser(User user, Set<UserRole> userRoles) throws Exception ;
 	
-//	public ResponseEntity<ResponseStructure<User>> findUserById(long id) ;
-//	
-//	public ResponseStructure<List<User>> findAllUser() ;
-//	
-//	public ResponseEntity<ResponseStructure<User>> deleteUserById(long id) ;
-//	
-//	public ResponseEntity<ResponseStructure<User>> updateUser(long id, User user, Set<UserRole> userRoles) ;
+	public ResponseEntity<ResponseStructure<User>> findUserById(long id) ;
+	
+	public ResponseStructure<List<User>> findAllUser() ;
+	
+	public ResponseEntity<ResponseStructure<User>> deleteUserById(long id) ;
+	
+	public ResponseEntity<ResponseStructure<User>> updateUser(long id, User user, Set<UserRole> userRoles) ;
 	
 }
